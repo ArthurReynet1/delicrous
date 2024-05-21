@@ -28,7 +28,8 @@ CREATE TABLE IF NOT EXISTS Restaurant (
     name TEXT NOT NULL,
     phone TEXT NOT NULL,
     description TEXT NOT NULL,
-    image TEXT NOT NULL
+    image_logo TEXT NOT NULL,
+    image_banner TEXT NOT NULL
 )''')
 
 print("Table Restaurant created successfully")
@@ -41,6 +42,8 @@ CREATE TABLE IF NOT EXISTS Dish (
     price REAL NOT NULL,
     description TEXT NOT NULL,
     image TEXT NOT NULL,
+    opening_time TEXT NOT NULL,
+    closing_time TEXT NOT NULL,
     restaurant_id INTEGER NOT NULL,
     FOREIGN KEY(restaurant_id) REFERENCES Restaurant(id)
 )''')
