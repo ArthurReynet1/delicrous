@@ -34,8 +34,8 @@ html, body {
 }
 
 .nav-icon > img {
-    width: 20%;
-    height: 20%;
+    width: 40px;
+    height: 40px;
 }
 
 .burger {
@@ -87,7 +87,9 @@ html, body {
     height: 2px;
     background: #e10512;
     width: 80vw;
-    margin: auto;
+    margin-top:20px;
+    margin-right:auto;
+    margin-left:auto;
 }
 
 @media screen and (max-width: 500px) {
@@ -96,5 +98,50 @@ html, body {
         height: 75px;
     }
     
+}
+@media screen and (min-width: 500px) {
+    .nav-icon > img {
+        max-width: 300px;
+        max-height: 300px;
+    }
+    .formulaire{
+        max-width: 500px;
+    }
+}
 
+.placement{
+    width:97vw;
+    height:70vh;
+    display: flex;
+    justify-content: center;
+}
+
+
+.trucrouge{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 350%;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.formulaire{
+    width:80vw;
+    background-color: aqua;
+    border-radius: 20px;
+    border: 3px solid red;
+    box-shadow: 9px 9px 11px 0px rgba(0,0,0,0.59);
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+}
+#nom, #prenom, #mail, #phone, #mdp, #professional, #scholar{
+    height:10%;
+    width:95%;
+    border-radius: 30px;
+    border: 3px solid #bc262e;
+    font-size:20px;
+    box-shadow: 6px 3px 11px 0px rgba(0,0,0,0.71);
 }
