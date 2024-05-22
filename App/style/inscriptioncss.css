@@ -34,8 +34,8 @@ html, body {
 }
 
 .nav-icon > img {
-    width: 40px;
-    height: 40px;
+    width: 20%;
+    height: 20%;
 }
 
 .burger {
@@ -111,7 +111,7 @@ html, body {
 
 .placement{
     width:97vw;
-    height:70vh;
+    height:75vh;
     display: flex;
     justify-content: center;
 }
@@ -129,7 +129,6 @@ html, body {
 
 .formulaire{
     width:80vw;
-    background-color: aqua;
     border-radius: 20px;
     border: 3px solid red;
     box-shadow: 9px 9px 11px 0px rgba(0,0,0,0.59);
@@ -144,4 +143,7 @@ html, body {
     border: 3px solid #bc262e;
     font-size:20px;
     box-shadow: 6px 3px 11px 0px rgba(0,0,0,0.71);
+}
+#p{
+    position: relative; left:7%;
 }
