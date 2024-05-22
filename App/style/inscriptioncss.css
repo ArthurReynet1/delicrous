@@ -144,6 +144,14 @@ html, body {
     font-size:20px;
     box-shadow: 6px 3px 11px 0px rgba(0,0,0,0.71);
 }
+#professional, #scholar{
+    height:5%;
+    width:5%;
+    border-radius: 30px;
+    border: 3px solid #bc262e;
+    font-size:20px;
+    box-shadow: 6px 3px 11px 0px rgba(0,0,0,0.71);
+}
 #p{
     position: relative; left:7%;
 }
