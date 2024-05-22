@@ -55,8 +55,39 @@ html, body {
 }
 
 .footer {
-    background: blue;
-    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+.footer > .icons {
+    margin-left: 15px;
+    display: flex;
+}
+
+.footer > .icons > .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-left: 50px;
+}
+
+.links > a {
+    margin-right: 15px;
+}
+
+.separate {
+    height: 2px;
+    background: #e10512;
+    width: 80vw;
+    margin: auto;
 }
 
 @media screen and (max-width: 500px) {
@@ -64,4 +95,6 @@ html, body {
         width: 75px;
         height: 75px;
     }
+    
+
 }
