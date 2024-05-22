@@ -22,7 +22,25 @@
         <div class="content">
             <div class="trucrouge"></div>
         </div>
-
+        <h1>Register</h1>
+        <form action="/inscription" method="POST">
+        <label for="nom">Last Name:</label>
+        <input type="text" id="nom" name="nom" required><br>
+        <label for="prenom">First Name:</label>
+        <input type="text" id="prenom" name="prenom" required><br>
+        <label for="mail">Email:</label>
+        <input type="email" id="mail" name="mail" required><br>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required><br>
+        <label for="mdp">Password:</label>
+        <input type="password" id="mdp" name="mdp" required><br>
+        <label for="professional">Professional:</label>
+        <input type="checkbox" id="professional" name="professional"><br>
+        <label for="scholar">Scholar:</label>
+        <input type="checkbox" id="scholar" name="scholar"><br>
+        <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="/connexion">Login</a></p>
         <div class="separate"></div>
         <div class="footer">
             <div class="icons">
