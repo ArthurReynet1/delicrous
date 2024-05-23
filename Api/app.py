@@ -41,7 +41,7 @@ def home():
         campus = cursor.fetchall()
         connection.close()
         user_name = get_user_name()
-        return render_template('acceuil.html', select_campus=campus, user_name=user_name)
+        return render_template('accueil.html', select_campus=campus, user_name=user_name)
     except Exception as e:
         # Log the exception e
         return render_template('error.html', error=e)

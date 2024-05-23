@@ -2,24 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style/style.css') }}"
     />
+    <link rel="stylesheet" href="https://use.typekit.net/zsn1lyk.css">
 <title>Home</title>
 </head>
 <body>
-<h1>Welcome{% if user_name %}, {{ user_name }}{% endif %}!</h1>
-<h2>Select Campus</h2>
-<ul>
-    {% for campus in select_campus %}
-    <li><a href="/restaurants-liste?campus_id={{ loop.index0 }}">{{ campus[0] }}</a></li>
-    {% endfor %}
-</ul>
+<!-- <h1>Welcome{% if user_name %}, {{ user_name }}{% endif %}!</h1> -->
+<div class="burgermenu"></div>
 <div class="maingrid">
     <div class="navbar">
         <div class="nav-icon">
-            <img src="../assets/img/crousIcon.png" alt="logoDelirous">
+            <img src="../static/assets/img/crousIcon.png" alt="logoDelirous">
             <p>Déli-<strong>Crous</strong></p>
         </div>
         <div class="burger"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -30,8 +27,43 @@
 
 <div class="content">
     <div class="trucrouge">
-        <p>Système de livraison efficace sur tous nos campus pour répondre aux besoins des étudiants.</p>
+        <p>Système de livraison INTELLIGENT sur tous nos campus pour répondre aux besoins des étudiants</p>
     </div>
+    <div class="croustibot-container">
+        <div class="title">
+            <h3>Crous-ti Bot</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg>
+        </div>
+        <div class="chat-box">
+            <ul>
+                <li class="active-text"><p>Qu'est-ce que tu veux manger aujourd-hui ?</p><img src="../static/assets/img/chatbot.png" alt="image de robot"></li>
+                <li>Comme d'habitude chef</li>
+                <li>Surprends moi !</li>
+                <li>Je me débrouille !</li>
+                <li>...</li>
+            </ul>
+        </div>
+        <div class="msg-box">
+            <input type="text" name="msg" id="msg" placeholder="Entrez votre message...">
+        </div>
+    </div>
+    <div class="txtcontainer">
+
+        <p>Vous savez déjà ce que vous voulez ?</p>
+    </div>
+    <div class="select-campus">
+        <div class="campus-content">
+            <label for="campus">Select campus :</label>
+            <select id="campus" name="campus">
+                {% for campus in select_campus %}
+                <a href="/restaurants-liste?campus_id={{ loop.index0 }}">{{ campus[0] }}</a>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+<ul>
+
+</ul>
 
 </div>
 
