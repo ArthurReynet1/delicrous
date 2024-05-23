@@ -50,12 +50,40 @@ html, body {
 }
 
 .trucrouge {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
     height: 100px;
     background: #e10512;
     border-radius: 0% 0% 50% 50% / 0% 0% 25% 25%;
+}
+
+.rest-banner {
+    margin-top: 30px;
+    background: aqua;
+    grid-row: 1;
+    grid-column-start:1 ;
+    grid-column-end: 4;
+}
+
+.rest-logo {
+    width: 50px;
+    height: 50px;
+    margin-top: 30px;
+    background: green;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column: 1;
+}
+
+.rest-name {
+    margin-top: 30px;
+    background: yellow;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row: 2;
 }
 
 .footer {
@@ -115,7 +143,7 @@ html, body {
         align-items: center;
         height: 200px;
         background: #e10512;
-      
+    }
     
 
     .footer {
