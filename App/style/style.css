@@ -51,8 +51,8 @@ html, body {
 
 .trucrouge {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(20%, 40%, 40%);
+    grid-template-rows: repeat(60%, 40%);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     height: 100px;
@@ -61,17 +61,22 @@ html, body {
 }
 
 .rest-banner {
-    margin-top: 30px;
+    margin-top: 20px;
     background: aqua;
+    height: 100px;
+    border-radius: 45%;
     grid-row: 1;
     grid-column-start:1 ;
     grid-column-end: 4;
 }
 
 .rest-logo {
-    width: 50px;
-    height: 50px;
-    margin-top: 30px;
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+    margin-right: 5px;
+    margin-top: 80px;
+    border-radius: 5px;
     background: green;
     grid-row-start: 1;
     grid-row-end: 3;
@@ -79,8 +84,10 @@ html, body {
 }
 
 .rest-name {
-    margin-top: 30px;
+    margin-top: 0;
+    margin-left: 0px;
     background: yellow;
+    font-size: 20px;
     grid-column-start: 2;
     grid-column-end: 4;
     grid-row: 2;
@@ -154,5 +161,10 @@ html, body {
         height: 50px;
         font-size: 0.75rem;
         padding-bottom: 10px;
+    }
+
+    .rest-logo {
+        width: 20vw;
+        height: 20vw;
     }
 }
