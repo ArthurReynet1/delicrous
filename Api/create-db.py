@@ -37,11 +37,11 @@ CREATE TABLE IF NOT EXISTS Restaurant (
     id_Restaurant INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     name_Restaurant TEXT NOT NULL,
     phone_Restaurant TEXT NOT NULL,
-    description_Restaurant TEXT NOT NULL,
-    image_logo_Restaurant TEXT NOT NULL,
-    image_banner_Restaurant TEXT NOT NULL,
-    opening_time_Restaurant TEXT NOT NULL,
-    closing_time_Restaurant TEXT NOT NULL,
+    description_Restaurant TEXT,
+    image_logo_Restaurant TEXT,
+    image_banner_Restaurant TEXT ,
+    opening_time_Restaurant TEXT,
+    closing_time_Restaurant TEXT,
     campus_id_Restaurant INTEGER NOT NULL,
     FOREIGN KEY(campus_id_Restaurant) REFERENCES Campus(id_Campus)
 )''')
@@ -54,8 +54,8 @@ CREATE TABLE IF NOT EXISTS Dish (
     id_Dish INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     name_Dish TEXT NOT NULL,
     price_Dish REAL NOT NULL,
-    description_Dish TEXT NOT NULL,
-    image_Dish TEXT NOT NULL,
+    description_Dish TEXT,
+    image_Dish TEXT,
     restaurant_id_Dish INTEGER NOT NULL,
     FOREIGN KEY(restaurant_id_Dish) REFERENCES Restaurant(id_Restaurant)
 )''')
