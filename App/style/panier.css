@@ -147,13 +147,53 @@ html, body {
 .container1{
     width:80%;
     height:90%;
-    border: 5px solid #e10512;
+    border: 5px solid #b1000a;
     border-radius: 20px;
-
+    padding-left: 50px;
+    box-shadow: 9px 9px 11px 0px rgba(0,0,0,0.59);
 }
 
 @media screen and (min-width: 500px) {
     .container1{
         width:500px
     }
+}
+.liste{
+    width:80%;
+    height:25%;
+    display: flex;
+    padding-top: 20px;
+    padding-left: 10px;
+    justify-content: space-between;
+    color:#b1000a;
+    font-weight:700;
+    font-size: 20px;
+    border-bottom: 5px solid #b1000a;
+}
+
+#final-price{
+    width: 40px;
+    color:#b1000a;
+    position: relative; left:53%;
+    font-weight:700;
+    font-size: 30px;
+}
+#valider{
+    width:60%;
+    height:10%;
+    background-color: #e10512;
+    border-radius: 30px;
+    color: white;
+    font-weight: 700;
+    position: relative; left:25%; top:5%;
+}
+
+#continuer{
+    width:80%;
+    height:10%;
+    background-color: #e10512;
+    border-radius: 30px;
+    color: white;
+    font-weight: 700;
+    position: relative; left:5%; top:8%;
 }
