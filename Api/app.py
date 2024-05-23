@@ -1,8 +1,8 @@
-import sqlite3
 from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
+import sqlite3
 
-app = Flask(__name__, template_folder='App/templates', static_folder='App/static')
+app = Flask(__name__, template_folder='../App/views', static_folder='../App/static')
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_PERMANENT'] = False
 Session(app)
@@ -12,64 +12,71 @@ def get_cart():
         session['cart'] = []
     return session['cart']
 
-
 def add_to_cart(dish_id, quantity):
     cart = get_cart()
     cart.append({'dish_id': dish_id, 'quantity': quantity})
     session['cart'] = cart
 
-
 def clear_cart():
     session.pop('cart', None)
 
+def get_user_name():
+    user_id = session.get('id_Utilisateur')
+    if user_id:
+        connection = sqlite3.connect('Delicrous.db')
+        cursor = connection.cursor()
+        cursor.execute('SELECT firstname_User FROM User WHERE id_User=?', (user_id,))
+        user_name = cursor.fetchone()
+        connection.close()
+        if user_name:
+            return user_name[0]
+    return None
 
 @app.route('/', methods=['GET'])
 def home():
     try:
-        connection = sqlite3.connect('../Delicrous.db')
+        connection = sqlite3.connect('Delicrous.db')
         cursor = connection.cursor()
         cursor.execute('SELECT name_Campus FROM Campus')
         campus = cursor.fetchall()
-        user_name = cursor.execute('SELECT firstname_User FROM User WHERE id_User=?', (session['id_Utilisateur'],))
         connection.close()
-        return render_template('index.html', select_campus=campus, user_name=user_name)
+        user_name = get_user_name()
+        return render_template('acceuil.html', select_campus=campus, user_name=user_name)
     except Exception as e:
-        return render_template('error.html', error=str(e))
-
+        # Log the exception e
+        return render_template('error.html', error=e)
 
 @app.route('/restaurants-liste', methods=['GET'])
 def restaurant():
     try:
         campus_id = request.args.get('campus_id', type=int)
-        connection = sqlite3.connect('../Delicrous.db')
+        connection = sqlite3.connect('Delicrous.db')
         cursor = connection.cursor()
         cursor.execute('SELECT name_Restaurant, description_Restaurant, image_logo_Restaurant FROM Restaurant WHERE campus_id_Restaurant=?', (campus_id,))
         restaurant_list = cursor.fetchall()
-        user_name = cursor.execute('SELECT firstname_User FROM User WHERE id_User=?', (session['id_Utilisateur'],))
         connection.close()
+        user_name = get_user_name()
         return render_template('restaurants-liste.html', restaurant_list=restaurant_list, user_name=user_name)
     except Exception as e:
-        return render_template('error.html', error=str(e))
-
+        # Log the exception e
+        return render_template('error.html', error=e)
 
 @app.route('/restaurant-detail', methods=['GET'])
 def restaurant_detail():
     try:
         restaurant_name = request.args.get('restaurant_name')
-        connection = sqlite3.connect('../Delicrous.db')
+        connection = sqlite3.connect('Delicrous.db')
         cursor = connection.cursor()
         cursor.execute('SELECT name_Restaurant, description_Restaurant, image_logo_Restaurant, image_banner_Restaurant, opening_time_Restaurant, closing_time_Restaurant FROM Restaurant WHERE name_Restaurant=?', (restaurant_name,))
         restaurant = cursor.fetchone()
         cursor.execute('SELECT id_Dish, name_Dish, price_Dish, description_Dish, image_Dish FROM Dish WHERE restaurant_id_Dish=(SELECT id_Restaurant FROM Restaurant WHERE name_Restaurant=?)', (restaurant_name,))
         dish_list = cursor.fetchall()
-        user_name = cursor.execute('SELECT firstname_User FROM User WHERE id_User=?', (session.get('id_Utilisateur'),))
         connection.close()
+        user_name = get_user_name()
         return render_template('restaurant-detail.html', restaurant=restaurant, dish_list=dish_list, user_name=user_name)
     except Exception as e:
-        return render_template('error.html', error=str(e))
-
-
-
+        # Log the exception e
+        return render_template('error.html', error=e)
 
 @app.route('/inscription', methods=['GET', 'POST'])
 def inscription():
@@ -82,7 +89,7 @@ def inscription():
             mdp = request.form.get("mdp")
             professional = request.form.get("professional", type=bool)
             scholar = request.form.get("scholar", type=bool)
-            connection = sqlite3.connect('../Delicrous.db')
+            connection = sqlite3.connect('Delicrous.db')
             cursor = connection.cursor()
             cursor.execute("SELECT email_User FROM User WHERE email_User=?", (mail,))
             data = cursor.fetchone()
@@ -101,11 +108,11 @@ def inscription():
                               (prenom, nom, mail, phone, mdp, professional, scholar))
             connection.commit()
             connection.close()
-            return redirect('/login')
+            return redirect('/connexion')
         return render_template('register.html')
     except Exception as e:
-        return render_template('error.html', error=str(e))
-
+        # Log the exception e
+        return render_template('error.html', error=e)
 
 @app.route('/connexion', methods=['GET', 'POST'])
 def connexion():
@@ -113,22 +120,18 @@ def connexion():
         if request.method == 'POST':
             mail = request.values.get("email")
             mdp = request.values.get("password")
-            connection = sqlite3.connect('../Delicrous.db')
+            connection = sqlite3.connect('Delicrous.db')
             cursor = connection.cursor()
-            cursor.execute("""SELECT id_User, email_User, password_User FROM User;""")
-            data = cursor.fetchall()
-
-            for i in range(len(data)):
-                if mail == data[i][1] and mdp == data[i][2]:
-                    session['id_Utilisateur'] = data[i][0]
-            connection.commit()
+            cursor.execute("""SELECT id_User, email_User, password_User FROM User WHERE email_User=?""", (mail,))
+            user = cursor.fetchone()
             connection.close()
-
-            return redirect('/')
+            if user and user[2] == mdp:
+                session['id_Utilisateur'] = user[0]
+                return redirect('/')
         return render_template('login.html')
     except Exception as e:
-        return render_template('error.html', error=str(e))
-
+        # Log the exception e
+        return render_template('error.html', error=e)
 
 @app.route('/order', methods=['GET'])
 def order():
@@ -137,9 +140,8 @@ def order():
         if not user_id:
             return redirect('/connexion')
 
-        connection = sqlite3.connect('../Delicrous.db')
+        connection = sqlite3.connect('Delicrous.db')
         cursor = connection.cursor()
-
         cursor.execute('''
             SELECT o.id_Orders, o.date_Orders, 
                    GROUP_CONCAT(d.name_Dish || " (x" || oi.quantity_OrderItem || ")") as dishes, 
@@ -153,15 +155,12 @@ def order():
         ''', (user_id,))
 
         orders = cursor.fetchall()
-
-        cursor.execute('SELECT firstname_User FROM User WHERE id_User=?', (user_id,))
-        user_name = cursor.fetchone()[0]
-
         connection.close()
+        user_name = get_user_name()
         return render_template('orders.html', orders=orders, user_name=user_name)
     except Exception as e:
-        return render_template('error.html', error=str(e))
-
+        # Log the exception e
+        return render_template('error.html', error=e)
 
 @app.route('/add-to-cart', methods=['POST'])
 def add_to_cart_route():
@@ -175,8 +174,8 @@ def add_to_cart_route():
         add_to_cart(dish_id, quantity)
         return redirect(request.referrer)
     except Exception as e:
-        return render_template('error.html', error=str(e))
-
+        # Log the exception e
+        return render_template('error.html', error=e)
 
 @app.route('/cart', methods=['GET'])
 def cart():
@@ -185,7 +184,7 @@ def cart():
         total_price = 0
 
         for item in get_cart():
-            connection = sqlite3.connect('../Delicrous.db')
+            connection = sqlite3.connect('Delicrous.db')
             cursor = connection.cursor()
             cursor.execute('SELECT name_Dish, price_Dish FROM Dish WHERE id_Dish=?', (item['dish_id'],))
             dish = cursor.fetchone()
@@ -197,8 +196,8 @@ def cart():
 
         return render_template('cart.html', cart_items=cart_items, total_price=total_price)
     except Exception as e:
-        return render_template('error.html', error=str(e))
-
+        # Log the exception e
+        return render_template('error.html', error=e)
 
 @app.route('/clear-cart', methods=['POST'])
 def clear_cart_route():
@@ -206,10 +205,8 @@ def clear_cart_route():
         clear_cart()
         return redirect('/cart')
     except Exception as e:
-        return render_template('error.html', error=str(e))
-
-
-
+        # Log the exception e
+        return render_template('error.html', error=e)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
