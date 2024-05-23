@@ -50,9 +50,11 @@ html, body {
 }
 
 .trucrouge {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
     height: 100px;
     background: #e10512;
     border-radius: 0% 0% 50% 50% / 0% 0% 25% 25%;
