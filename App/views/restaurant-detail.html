@@ -7,10 +7,6 @@
 <title>{{ restaurant[0] }}</title>
 </head>
 <body>
-
-<img src="{{ restaurant[2] }}" alt="{{ restaurant[0] }} logo">
-<img src="{{ restaurant[3] }}" alt="{{ restaurant[0] }} banner">
-<p>{{ restaurant[1] }}</p>
 <p>Open: {{ restaurant[4] }} - Close: {{ restaurant[5] }}</p>
 <h2>Dishes</h2>
 <ul>
@@ -44,10 +40,11 @@
 
   <div class="content">
       <div class="trucrouge">
-          <img src="{{ restaurant[3] }}" alt="{{ restaurant[0] }} banner">
-          <img src="{{ restaurant[2] }}" alt="{{ restaurant[0] }} logo">
-          <h1>{{ restaurant[0] }}{% if user_name %}, {{ user_name }}{% endif %}</h1>
+          <img class="rest-banner" src="{{ restaurant[3] }}" alt="{{ restaurant[0] }} banner">
+          <img class="rest-logo" src="{{ restaurant[2] }}" alt="{{ restaurant[0] }} logo">
+          <h1 class="rest-name" >{{ restaurant[0] }}{% if user_name %}, {{ user_name }}{% endif %}</h1>
       </div>
+      <p class="rest-desc">{{ restaurant[1] }}</p>
   </div>
 
   <div class="separate"></div>

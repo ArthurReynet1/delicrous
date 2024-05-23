@@ -60,6 +60,32 @@ html, body {
     border-radius: 0% 0% 50% 50% / 0% 0% 25% 25%;
 }
 
+.rest-banner {
+    margin-top: 30px;
+    background: aqua;
+    grid-row: 1;
+    grid-column-start:1 ;
+    grid-column-end: 4;
+}
+
+.rest-logo {
+    width: 50px;
+    height: 50px;
+    margin-top: 30px;
+    background: green;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column: 1;
+}
+
+.rest-name {
+    margin-top: 30px;
+    background: yellow;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row: 2;
+}
+
 .footer {
     display: flex;
     flex-direction: row;
