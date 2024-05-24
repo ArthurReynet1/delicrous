@@ -1,0 +1,357 @@
+/* Droid Sans Regular
+font-family: "droid-sans", sans-serif;
+font-weight: 400;
+font-style: normal;
+Droid Sans Bold
+font-family: "droid-sans", sans-serif;
+font-weight: 700;
+font-style: normal; */
+html, body {
+    font-family: "droid-sans", sans-serif;
+    font-weight: 400;
+    height: 100%;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.maingrid {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    background: white;
+    box-shadow: 0px 2px 6px 0px #0000006c;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.burger > svg {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.nav-icon > p {
+    margin-left: 10px;
+}
+
+.nav-icon > img {
+    width: 40px;
+    height: 40px;
+}
+
+.burger {
+    margin-right: 10px;
+}
+
+.content {
+    flex: 1;    
+    display: grid;
+    z-index: 1;
+}
+
+.trucrouge {
+    display: grid;
+    grid-template-columns: repeat(20%, 40%, 40%);
+    grid-template-rows: repeat(60%, 40%);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 100px;
+    background: #e10512;
+    border-radius: 0% 0% 50% 50% / 0% 0% 25% 25%;
+}
+
+.trucrouge > p {
+    display: flex;
+    color:white;
+    justify-content: center;
+    align-self: center;
+    font-weight: 700;
+    text-align: center;
+}
+
+.select-campus {
+    background-image: url(../assets/img/photo-restauration.png);
+    opacity: 0.7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 300px;
+}
+
+.campus-content {
+    background: white;
+    width: 200px;
+    height: 25px;
+    border-radius: 20px;
+    border: solid 2px #e10512;
+    text-align: center;
+}
+
+.croustibot-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0;
+    border-radius: 10px;
+    border: solid 3px #e10512;
+    margin:20px 40px;
+    height: 400px;
+}
+
+.croustibot-container > .title {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid 2px #e10512;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    z-index: 1;
+}
+
+.croustibot-container > .title > svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    fill: #b1000a
+}
+
+.croustibot-container > .chat-box {
+    position: absolute;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    text-align: right;
+    right: 10px;
+    top: 30px;
+    z-index: 1;
+    height: 280px;
+    /* background: aqua; */
+}
+.croustibot-container > .chat-box > ul  {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    justify-content: end;
+    text-align: right;
+    list-style: none;
+}
+
+
+.croustibot-container > .chat-box > ul > li {
+    font-weight: bold;
+    text-align: center;
+    background: #e10512;
+    padding: 5px;
+    margin-bottom: 3px;
+    padding: 0 50px;
+    padding-left: auto;
+    margin-right: 42px;
+    color: white;
+    border-radius: 30px;
+    width: 40%;
+    box-shadow: 5px 2px 3px 0px rgba(0, 0, 0, 0.215);
+}
+.active-text {
+    box-shadow: 5px 2px 5px 0px rgba(0, 0, 0, 0) !important;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    background-color: rgba(255, 255, 255, 0) !important;
+    width: 100% !important;
+    margin-right: -50px !important;
+    padding-right: 0px;
+}
+.active-text > p {
+    box-shadow: 5px 2px 5px 0px rgba(0,0,0,0.215);
+    border-radius: 20px !important;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 3px;
+    color: white;
+    border-radius: 10px;
+    width: 60%;
+    background: #b1000a;
+    width: 100% !important;
+}
+.burger > svg {
+    transition: all 0.2s ease-in;
+
+}
+.burger:hover > svg{
+    color: #b1000a;
+    transition: all 0.2s ease-in;
+}
+
+.active-text > img {
+    margin-left: 10px;
+    border-radius: 100%;
+    border: solid 2px #b1000a;
+    width: 30px;
+    height: 30px;
+}
+
+.croustibot-container > .msg-box {
+    height: 90px;
+    bottom: 0px;
+    width: 100% !important;
+    position: absolute;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: left; 
+    z-index: 1;
+}
+
+.croustibot-container > .msg-box > input {
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    border-top: solid 2px #e10512;
+    background: #00000000;
+}
+
+
+.croustibot-container > .msg-box > input:focus{
+    border:0px;
+}
+
+.txtcontainer {
+    text-align: center;
+}
+
+.rest-banner {
+    margin-top: 20px;
+    background: aqua;
+    height: 100px;
+    border-radius: 45%;
+    grid-row: 1;
+    grid-column-start:1 ;
+    grid-column-end: 4;
+}
+
+.rest-logo {
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+    margin-right: 5px;
+    margin-top: 80px;
+    border-radius: 5px;
+    background: green;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column: 1;
+}
+
+.rest-name {
+    margin-top: 0;
+    margin-left: 0px;
+    background: yellow;
+    font-size: 20px;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row: 2;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-around;
+    gap: 5px;
+    height: 25px;
+    font-size: 0.75rem;
+    margin-bottom: 30px;
+}
+
+.reseau{
+    margin-left: 10px;
+    width: auto;
+    text-decoration: none;
+    color: black;
+}
+
+.footer > .icons {
+    margin-left: 15px;
+    margin-top: 15px;
+    display: flex;
+}
+
+.footer > .icons > .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-left: 50px;
+}
+
+.links > a {
+    margin-right: 15px;
+}
+
+.separate {
+    height: 2px;
+    background: #e10512;
+    width: 80vw;
+    margin: auto;
+}
+
+@media only screen and (max-width: 500px) {
+    .nav-icon > img {
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    .trucrouge {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        background: #e10512;
+    }
+    .trucrouge > p {
+        display: flex;
+        color:white;
+        justify-content: center;
+        align-self: center;
+        font-weight: 700;
+        text-align: center;
+        /* font-size: 100px; */
+    }
+    
+
+    .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        height: 50px;
+        font-size: 0.75rem;
+        padding-bottom: 10px;
+    }
+
+    .rest-logo {
+        width: 20vw;
+        height: 20vw;
+    }
+}
