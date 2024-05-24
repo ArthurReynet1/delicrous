@@ -150,6 +150,7 @@ html, body {
 
 #p{
     position: relative; left:7%;
+
 }
 #login{
     background-color: #e10512;
@@ -159,4 +160,3 @@ html, body {
     color:white;
     font-weight: 700;
     margin-left: 30%;
-}

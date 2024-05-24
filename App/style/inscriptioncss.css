@@ -136,7 +136,7 @@ html, body {
     flex-direction: column;
     padding: 7px;
 }
-#nom, #prenom, #mail, #phone, #mdp, #professional, #scholar{
+#nom, #prenom, #mail, #phone, #mdp{
     height:10%;
     width:95%;
     border-radius: 30px;
